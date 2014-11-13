@@ -32,8 +32,31 @@ body {
 	margin: 0;
 	padding: 0;
 	background: #000;
-	color: #ccc;
+	color: #000;
 	font-family: "Courier New", Courier, monospace;
+}
+a {
+	color: #000;
+}
+a:hover {
+	text-decoration: none;
+}
+#menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 1em;
+	background: rgba(255,255,255,0.5);
+}
+#menu:hover {
+	background: rgba(192,192,192,1);
+}
+#menu:hover #menu-content {
+	display: block;
+	transition-delay: 1s;
+}
+#menu #menu-content {
+	display: none;
 }
 #life {
 	display: block;
@@ -45,7 +68,15 @@ body {
 </head>
 
 <body>
-
+<div id="menu">
+	<h1>Menu</h1>
+	<div id="menu-content">
+		<form method="get">
+			<p>Change canvas size:</p>
+			<input type="text" name="w" size="5" placeholder="Width" /><input type="text" name="h" size="5" placeholder="Height" /><button type="submit">Submit</button>
+		</form>
+	</div>
+</div>
 <canvas id="life"></canvas>
 
 </body>
