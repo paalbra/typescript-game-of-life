@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<?php
-$width  = ( isset($_GET['w']) && preg_match('/^\d{1,4}$/', $_GET['w']) ? $_GET['w'] : 1000 );
-$height = ( isset($_GET['h']) && preg_match('/^\d{1,4}$/', $_GET['h']) ? $_GET['h'] : 400 );
-?>
 <html>
 <head>
 <title>Life</title>
@@ -11,7 +7,9 @@ $height = ( isset($_GET['h']) && preg_match('/^\d{1,4}$/', $_GET['h']) ? $_GET['
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 window.onload = function() {
-	l = new Life("life", <?php echo "$width, $height" ?>);
+	var w = parseInt((window.location.search.match(/[&?]w=(\d{1,4})(?:$|&)/)||[,""])[1]) || 640;
+	var h = parseInt((window.location.search.match(/[&?]h=(\d{1,4})(?:$|&)/)||[,""])[1]) || 320;
+	l = new Life("life", w, h);
 	l.randomizeImageData();
 	window.setInterval(function() {
 		l.tick();
