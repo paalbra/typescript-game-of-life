@@ -26,6 +26,12 @@ function padBodyTop() {
 	if (topPad < 0) topPad = 0;
 	$('body').animate({paddingTop: topPad}, 200);
 }
+
+function fillScreen() {
+	var w = $(window).width();
+	var h = $(window).height();
+	window.location = "?w=" +w +"&h=" +h;
+}
 </script>
 <style>
 body {
@@ -71,10 +77,13 @@ a:hover {
 <div id="menu">
 	<h1>Menu</h1>
 	<div id="menu-content">
+		<p>Change canvas size:</p>
 		<form method="get">
-			<p>Change canvas size:</p>
-			<input type="text" name="w" size="5" placeholder="Width" /><input type="text" name="h" size="5" placeholder="Height" /><button type="submit">Submit</button>
+			<input type="text" name="w" size="5" placeholder="Width" /><input type="text" name="h" size="5" placeholder="Height" /><br />
+			<button type="submit">Submit</button>
 		</form>
+		<p>Click to fill screen:</p>
+		<button onclick="javascript:fillScreen()">Fill screen</button>
 	</div>
 </div>
 <canvas id="life"></canvas>
